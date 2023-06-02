@@ -2,9 +2,19 @@ import React from "react"
 import ListGroup from 'react-bootstrap/ListGroup'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 export default function Packages(props){
-    const displayPackages = props.packages.map((eachPackage) => <ListGroup.Item >{eachPackage}</ListGroup.Item>)
+
+    const displayPackages = props.packages.map((eachPackage, i) => (
+        <Col key={i}>
+            <Card border='info'>
+                <Card.Title>   
+                    {eachPackage}
+                </Card.Title>
+            </Card>
+        </Col>))
 
     return (
         <Container className="packages">
@@ -17,9 +27,9 @@ export default function Packages(props){
                         Take a look at some of our packages!
                     </Card.Text>
                 </Card.Body>
-                <ListGroup>
+                <Row xs={1} md={2} className="g-4" style={{padding:'20px'}}>
                     {displayPackages}
-                </ListGroup>
+                </Row>
             </Card>
         </Container>
     )
